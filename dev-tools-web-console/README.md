@@ -85,7 +85,7 @@
   document.body.style.transform = 'rotate(180deg)';
   ```
 
-- **Make text rainbow-colored (simple effect):**
+- **Make text multi-colored (simple effect):**
   ```javascript
   const paragraphs = document.querySelectorAll('p');
   let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
