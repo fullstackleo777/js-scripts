@@ -79,7 +79,7 @@
 
 ---
 
-### **5. Fun or Visual Tricks**
+### **5. Fun and Visual Tricks**
 - **Rotate the entire page:**
   ```javascript
   document.body.style.transform = 'rotate(180deg)';
