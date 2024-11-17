@@ -1,4 +1,5 @@
-# General-use JavaScript functions you can run in the browser's developer tools console to inspect, manipulate, and interact with web pages dynamically:
+# Javascript Scripts for Dev Tools Web Console
+## General-use JavaScript functions you can run in the browser's developer tools console to inspect, manipulate, and interact with web pages dynamically
 
 ---
 
