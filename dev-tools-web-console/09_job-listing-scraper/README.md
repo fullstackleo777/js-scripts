@@ -80,4 +80,10 @@ This script is a CSP-friendly version with the following features:
 
 —This script avoids all CSP issues by using the browser’s built-in print-to-PDF and `document.title` instead of external libraries.
 
+## Why this Script?
+
+I was manually saving a PDF print of any job listing I applied to and saving the PDF in a local directory on my computer.
+
+In my experience, sometimes I apply for the work, get an interview and when I try to access the job listing on Indeed, it has been taken down or it has changed. This way, I always have a local copy saved that I can use for interview prep and during the interview process in general.
+
 ___
