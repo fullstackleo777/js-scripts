@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 64 64"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img" aria-label="Indeed PDF Saver Icon">
+
+  <!-- Document base -->
+  <rect x="4" y="4" width="56" height="56" rx="6" fill="#003A9B"/>
+
+  <!-- Folded corner -->
+  <path d="M44,4 L60,4 L60,20 Z" fill="#E53E3E"/>
+
+  <!-- PDF label, centered -->
+  <text x="32" y="28" text-anchor="middle"
+        font-family="Arial, sans-serif" font-size="14"
+        font-weight="bold" fill="#FFFFFF">
+    PDF
+  </text>
+
+  <!-- Stylized Indeed “i” mark, centered below -->
+  <g fill="#FFFFFF">
+    <circle cx="32" cy="42" r="4"/>
+    <rect x="30" y="46" width="4" height="12" rx="2"/>
+  </g>
+</svg>
