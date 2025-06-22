@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Indeed PDF Saver",
+  "version": "1.0",
+  "description": "Add a Save-PDF button to Indeed job pages with a templated filename.",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.indeed.com/viewjob*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
