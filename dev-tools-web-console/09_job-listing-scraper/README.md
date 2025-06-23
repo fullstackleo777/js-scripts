@@ -71,14 +71,14 @@ This script is a CSP-friendly version with the following features:
 ## How to Use
 
 1. Paste the snippet into your DevTools Console on any Indeed job page.
-2. A print dialog appears—select “Save as PDF.”
+2. A print dialog appears select “Save as PDF.”
 3. The **default** filename will be:
 
    ```
    YYYY-MM-DD_Location_Employer_Job-Title.pdf
    ```
 
-—This script avoids all CSP issues by using the browser’s built-in print-to-PDF and `document.title` instead of external libraries.
+This script avoids all CSP issues by using the browser’s built-in print-to-PDF and `document.title` instead of external libraries.
 
 ## Why this Script?
 
