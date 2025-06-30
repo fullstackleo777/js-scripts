@@ -86,4 +86,22 @@ I was manually saving a PDF print of any job listing I applied to and saving the
 
 In my experience, sometimes I apply for the work, get an interview and when I try to access the job listing on Indeed, it has been taken down or it has changed. This way, I always have a local copy saved that I can use for interview prep and during the interview process in general.
 
+## Publish on Chrome Web Store
+
+1. **Register as a developer**
+   * Go to the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) and pay the one-time \$5 registration fee.
+
+2. **Package your extension**
+   * Zip up your manifest.json, content.js, icons, etc.
+
+3. **Create a new item**
+
+   * Upload the ZIP, fill in your listing details (name, description, screenshots, pricing/distribution).
+   * Choose **Unlisted** if you only want people with the direct link to see/install it, or **Public** if you want it searchable.
+
+4. **Publish**
+   * Once published, users can click your Web Store link and install it without developer mode required.
+
+> **Note:** You don’t strictly *have* to publish publicly. The Web Store supports **private** or **unlisted** listings so only users you share the link with can install. All installations are then CSP-compliant and auto-updated.
+
 ___
