@@ -2,7 +2,7 @@
   const sanitize = s =>
     s.trim()
      .replace(/[^0-9A-Za-z\s\-]/g, '')   // drop punctuation except hyphens/spaces
-     .replace(/\s+/g, '-');             // collapse spaces to hyphens
+     .replace(/\s+/g, '-');   // collapse spaces to hyphens
 
   function extractJobData() {
     const h1 = document.querySelector('h1');
@@ -30,13 +30,16 @@
   function makeButton() {
     const btn = document.createElement('button');
     btn.textContent = '💾 Save PDF';
-    btn.style.cursor = 'pointer';
-    btn.style.marginLeft = '12px';
-    btn.style.padding = '4px 8px';
-    btn.style.fontSize = '14px';
-    btn.style.border = '1px solid #ccc';
-    btn.style.borderRadius = '4px';
-    btn.style.background = '#fff';
+    btn.className = 'indeed-pdf-saver-btn';
+    Object.assign(btn.style, {
+      cursor: 'pointer',
+      marginLeft: '12px',
+      padding: '4px 8px',
+      fontSize: '14px',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      background: '#fff'
+    });
 
     btn.addEventListener('click', () => {
       try {
@@ -48,9 +51,7 @@
           sanitize(employer),
           sanitize(title)
         ].join('_');
-        // Set the filename token as the document title
         document.title = token;
-        // Fire print dialog (choose “Save as PDF”)
         setTimeout(() => window.print(), 100);
       } catch (err) {
         alert('Error: ' + err.message);
@@ -60,18 +61,33 @@
     return btn;
   }
 
-  // Insert the button next to the <h1> title
-  try {
+  function injectButtonOnce() {
     const h1 = document.querySelector('h1');
     if (!h1) return;
-    const wrapper = h1.parentElement;
-    // avoid inserting twice
-    if (!wrapper.querySelector('.save-pdf-btn')) {
-      const btn = makeButton();
-      btn.classList.add('save-pdf-btn');
-      wrapper.appendChild(btn);
-    }
-  } catch (e) {
-    console.error('Indeed-PDF-Saver:', e);
+
+    // Prevent duplicate insertion
+    const container = h1.parentElement;
+    if (container.querySelector('.indeed-pdf-saver-btn')) return;
+
+    const btn = makeButton();
+    container.appendChild(btn);
   }
+
+  // 1) Initial attempt
+  injectButtonOnce();
+
+  // 2) Watch for changes to the DOM so we can re-inject if Indeed re-renders
+  const observer = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      // if any new nodes are added under body, try injecting
+      if (m.addedNodes.length) {
+        injectButtonOnce();
+        break;
+      }
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Optional: stop observing after some time to save resources
+  setTimeout(() => observer.disconnect(), 30_000);
 })();
