@@ -51,7 +51,9 @@
           sanitize(employer),
           sanitize(title)
         ].join('_');
+        // Set the filename token as the document title
         document.title = token;
+        // Fire print dialog (choose “Save as PDF”)
         setTimeout(() => window.print(), 100);
       } catch (err) {
         alert('Error: ' + err.message);
