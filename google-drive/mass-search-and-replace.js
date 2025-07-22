@@ -1,10 +1,21 @@
-function replaceTextSpecificFolder() {
-  var files = DriveApp.getFolderById("FOLDER_ID").getFiles();
-  while (files.hasNext()) {
-    var file = files.next();
-    var doc = DocumentApp.openById(file.getId());
-    doc.replaceText("SEARCH_TEXT", "REPLACE_TEXT");
-  }
-}
+function replaceInDocs() {
+  const FOLDER_ID = 'YOUR_FOLDER_ID_HERE'; // Replace with your folder ID
+  const SEARCH_TEXT = 'camapaigns';
+  const REPLACE_TEXT = 'campaigns';
+  
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+  const files = folder.getFilesByType(MimeType.GOOGLE_DOCS);
 
-// Source: https://stackoverflow.com/questions/64990217/find-and-replace-text-in-entire-google-drive-folder-headers-footers-google-do
+  while (files.hasNext()) {
+    const file = files.next();
+    const doc = DocumentApp.openById(file.getId());
+    const body = doc.getBody();
+
+    body.replaceText(SEARCH_TEXT, REPLACE_TEXT);
+    doc.saveAndClose();
+    
+    Logger.log(`Updated: ${file.getName()}`);
+  }
+
+  Logger.log('All documents have been processed.');
+}
