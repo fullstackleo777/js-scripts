@@ -1,5 +1,5 @@
 function generateDownloadLinks() {
-  const folderId = Browser.inputBox('Enter the Folder ID containing the Google Docs:');
+  const folderId = Browser.inputBox('Enter the Folder ID containing the Google Docs:'); // be sure to remove Browser.inputBox()
   const folder = DriveApp.getFolderById(folderId);
   const files = folder.getFilesByType(MimeType.GOOGLE_DOCS);
   let output = '';
