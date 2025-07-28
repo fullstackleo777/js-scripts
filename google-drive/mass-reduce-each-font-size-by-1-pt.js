@@ -19,12 +19,20 @@ function reduceFontSizeInElement(element) {
     const child = element.getChild(i);
     const type = child.getType();
 
-    if (type === DocumentApp.ElementType.PARAGRAPH || type === DocumentApp.ElementType.TABLE_CELL) {
+    if (type === DocumentApp.ElementType.PARAGRAPH || type === DocumentApp.ElementType.LIST_ITEM || type === DocumentApp.ElementType.TABLE_CELL) {
       const text = child.asText();
-      for (let j = 0; j < text.getText().length; j++) {
-        const attr = text.getFontSize(j);
-        if (attr) {
-          text.setFontSize(j, attr - 1);
+      let start = 0;
+      while (start < text.getText().length) {
+        const currentFontSize = text.getFontSize(start);
+        if (currentFontSize) {
+          let end = start + 1;
+          while (end < text.getText().length && text.getFontSize(end) === currentFontSize) {
+            end++;
+          }
+          text.setFontSize(start, end - 1, currentFontSize - 1);
+          start = end;
+        } else {
+          start++;
         }
       }
     } else if (type === DocumentApp.ElementType.TABLE) {
@@ -35,8 +43,6 @@ function reduceFontSizeInElement(element) {
           reduceFontSizeInElement(row.getCell(c));
         }
       }
-    } else if (type === DocumentApp.ElementType.LIST_ITEM) {
-      reduceFontSizeInElement(child.asListItem());
     }
   }
 }
